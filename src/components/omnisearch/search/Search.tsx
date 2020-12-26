@@ -4,6 +4,7 @@ import PaginatedFuseSearch from "./PaginatedFuseSearch";
 import Fuse from "fuse.js";
 import { FuseSearchResult } from "./FuseSearch";
 import { Container } from "../../Container";
+import Filters from "../filter/Filters";
 
 export interface SearchProps<T> {
   items: T[];
@@ -42,7 +43,7 @@ export default class Search<T> extends React.PureComponent<SearchProps<T>, Searc
     return (
       <>
         <Searchbar onValueUpdate={this.onQueryUpdate.bind(this)} placeholder={searchBarPlaceholder} />
-        <Container>
+        <Container sidebar={<Filters />}>
           <PaginatedFuseSearch
             query={query}
             items={items}
